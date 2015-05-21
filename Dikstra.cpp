@@ -22,8 +22,10 @@ typedef pair<int, int> PII;
 //
 
 
+int V;
 int inf = INT_MAX/2;
-vector<PII> vertex[101];
+vector<PII> vertex[V];
+int distance[V];
 priority_queue<status, vector<status>, greater<status> > q;
 struct status
 {
@@ -50,10 +52,10 @@ void Dikstra()
 		{
 			to = vertex[sta.edge][i].first;
 			cos = vertex[sta.edge][i].second;
-			if(dist[to][sta.chicket] > dist[sta.edge][sta.chicket] + cos)
+			if(distance[to] > distance[sta.edge] + cos)
 			{
-				dist[to][sta.chicket] = dist[sta.edge][sta.chicket] + cos;
-				p.Set(to,dist[to][sta.chicket],sta.chicket);
+				distance[to] = distance[sta.edge] + cos;
+				p.Set(to,distance[to]);
 				q.push(p);
 			}
 		}
@@ -61,7 +63,6 @@ void Dikstra()
 		q.pop();
 	}
     
-    
-	printf("%d\n", min(dist[n][0],dist[n][1]));
 }
-}
+
+
