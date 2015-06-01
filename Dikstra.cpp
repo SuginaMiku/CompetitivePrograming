@@ -11,6 +11,9 @@ using namespace std;
 typedef long long LL;
 typedef pair<int, int> PII;
 
+typedef int Dis;
+typedef pair<int, Dis> PID;
+
 
 #define FOR(i,a,b) for(int i=(a);i<(b);++i)
 #define REP(i,n)  FOR(i,0,n)
@@ -22,29 +25,29 @@ typedef pair<int, int> PII;
 //
 
 
-int V;
-int inf = INT_MAX/2;
-vector<PII> vertex[V];
-int distance[V];
-priority_queue<status, vector<status>, greater<status> > q;
 struct status
 {
-	int edge,dist;
-	void Set(int _edge,int _dist)
+	int edge;Dis dis;
+	void Set(int _edge,Dis _dis)
 	{
 		edge = _edge;
-		dist = _dist;
+		dist = _dis;
 	}
 	bool operator >(const status &st)const
 	{
-		return dist > st.dist;
+		return dis > st.dis;
 	}
 };
+int V;
+int inf = INT_MAX/2;
+vector<PID> vertex[V];
+Dis dist[V];
+priority_queue<status, vector<status>, greater<status> > q;
 void Dikstra()
 {
 	//q have been pushed first para.
     status sta,p;
-    int to,cos;
+    int to;Dis cos;
     while(!q.empty())
     {
 		sta = q.top();
@@ -52,10 +55,10 @@ void Dikstra()
 		{
 			to = vertex[sta.edge][i].first;
 			cos = vertex[sta.edge][i].second;
-			if(distance[to] > distance[sta.edge] + cos)
+			if(dist[to] > dist[sta.edge] + cos)
 			{
-				distance[to] = distance[sta.edge] + cos;
-				p.Set(to,distance[to]);
+				dist[to] = dist[sta.edge] + cos;
+				p.Set(to,dist[to]);
 				q.push(p);
 			}
 		}
