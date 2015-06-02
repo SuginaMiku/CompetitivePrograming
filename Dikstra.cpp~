@@ -20,7 +20,8 @@ typedef pair<int, Dis> PID;
 #define CLR(a) memset((a), 0 ,sizeof(a))
 
 //
-// Dikstra algorithm  
+//  This code uses Dikstra algorithm.
+//  
 //
 
 
@@ -45,13 +46,11 @@ priority_queue<status, vector<status>, greater<status> > q;
 void Dikstra()
 {
 	//q have been pushed first para.
-	status sta,p;
-	int to;Dis cos;
-	while(!q.empty())
-	{
+    status sta,p;
+    int to;Dis cos;
+    while(!q.empty())
+    {
 		sta = q.top();
-		q.pop();
-		if(dist[sta.edge] < sta.dis) continue;
 		REP(i,vertex[sta.edge].size())
 		{
 			to = vertex[sta.edge][i].first;
