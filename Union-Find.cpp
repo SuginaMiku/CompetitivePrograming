@@ -35,7 +35,7 @@ void Marge(int p,int q)
 	else
 	{
 		parent[q]=p;
-		rank[p]--;
+		parent[p]--;
 	}
 
 }
