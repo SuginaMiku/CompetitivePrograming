@@ -6,6 +6,8 @@
 #include <vector>
 #include <limits.h>
 #include <math.h>
+#include <string.h>
+#include <stdlib.h>
 using namespace std;
 
 typedef long long LL;
