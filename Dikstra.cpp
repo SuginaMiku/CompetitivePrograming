@@ -27,6 +27,11 @@ typedef pair<int, Dis> PID;
 struct status
 {
 	int edge;Dis dis;
+	status(int _edge,Dis _dis)
+	{
+		edge = _edge;
+		dist = _dis;
+	}
 	void Set(int _edge,Dis _dis)
 	{
 		edge = _edge;
@@ -45,6 +50,7 @@ priority_queue<status, vector<status>, greater<status> > q;
 void Dikstra()
 {
 	//q have been pushed first para.
+	//q.push(status(0,0));
 	status sta,p;
 	int to;Dis cos;
 	while(!q.empty())
@@ -64,7 +70,6 @@ void Dikstra()
 			}
 		}
 		
-		q.pop();
 	}
     
 }
